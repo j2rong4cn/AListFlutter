@@ -11,6 +11,10 @@ on:
   #      - "sync_frp.yaml"
 
   workflow_dispatch:
+    inputs:
+      ALIST_BETA:
+        description: 'Alist beta version'
+        required: false
 
 jobs:
   android:
@@ -26,8 +30,8 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/alist-lib/scripts
           chmod +x *.sh
-          ./init_alist.sh
-          ./init_web.sh
+          ./init_alist.sh "${{ github.event.inputs.ALIST_BETA }}"
+          ./init_web.sh "${{ github.event.inputs.ALIST_BETA }}"
 
       - uses: actions/setup-go@v4
         with:
