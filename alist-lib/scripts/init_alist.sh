@@ -1,16 +1,12 @@
 #!/bin/bash
 
-GIT_REPO="https://github.com/alist-org/alist.git"
-if [ -n "$1" ]; then
-    TAG_NAME="main"
-else
-    TAG_NAME=$(git -c 'versionsort.suffix=-' ls-remote --exit-code --refs --sort='version:refname' --tags $GIT_REPO | tail --lines=1 | cut --delimiter='/' --fields=3)
-fi
+GIT_REPO="https://github.com/j2rong4cn/alist.git"
+TAG_NAME="main"
 
 echo "AList - ${TAG_NAME}"
 rm -rf ./src
 unset GIT_WORK_TREE
-git clone --branch "$TAG_NAME" --depth 1 https://github.com/alist-org/alist.git ./src
+git clone --branch "$TAG_NAME" --depth 1 "$GIT_REPO" ./src
 rm -rf ./src/.git
 
 mv -f ./src/* ../
