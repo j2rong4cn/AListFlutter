@@ -1,7 +1,7 @@
 #!/bin/bash
 
-curl -L https://github.com/alist-org/alist-web/releases/latest/download/dist.tar.gz -o dist.tar.gz
-tar -zxvf dist.tar.gz
+curl -L https://codeload.github.com/alist-org/web-dist/tar.gz/refs/heads/dev -o web-dist-dev.tar.gz
+tar -zxvf web-dist-dev.tar.gz
+rm -rf web-dist-dev.tar.gz
 rm -rf ../public/dist
-mv -f dist ../public
-rm -rf dist.tar.gz
+mv -f web-dist-dev/dist ../public
